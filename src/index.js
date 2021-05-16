@@ -15,3 +15,20 @@ cardsContainer.insertAdjacentHTML('beforeend', cardsMarkup);
 function createMenuCardsMarkup(cards) {
   return cards.map(menuCardTml).join(' ');
 }
+// ТЕМА---------
+const themeControl = document.querySelector('#theme-switch-toggle');
+
+const body = document.querySelector('body');
+
+const bodyLigth = body.classList.add('light-theme');
+
+themeControl.addEventListener('change', themeChangeControl);
+const themeChangeControl = function () {
+  if (body.light - theme) {
+    body.classList.remove('light-theme');
+    body.classList.add('dark-theme');
+  } else {
+    body.classList.remove('dark-theme');
+    body.classList.add('light-theme');
+  }
+};
