@@ -5,7 +5,6 @@ const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
-console.log(menuCardTml(cards[0]));
 
 const cardsContainer = document.querySelector('.js-menu');
 const cardsMarkup = createMenuCardsMarkup(cards);
@@ -16,19 +15,29 @@ function createMenuCardsMarkup(cards) {
   return cards.map(menuCardTml).join(' ');
 }
 // ТЕМА---------
-const themeControl = document.querySelector('#theme-switch-toggle');
 
+const themeControl = document.querySelector('#theme-switch-toggle');
 const body = document.querySelector('body');
 
-const bodyLigth = body.classList.add('light-theme');
+statusLocalStorage();
+
+body.classList.add('light-theme');
 
 themeControl.addEventListener('change', themeChangeControl);
-const themeChangeControl = function () {
-  if (body.light - theme) {
-    body.classList.remove('light-theme');
-    body.classList.add('dark-theme');
+
+function themeChangeControl() {
+  if (themeControl.checked) {
+    body.classList.replace('light-theme', 'dark-theme');
+    localStorage.setItem('light-theme', 'false');
   } else {
-    body.classList.remove('dark-theme');
-    body.classList.add('light-theme');
+    body.classList.replace('dark-theme', 'light-theme');
+    localStorage.setItem('light-theme', 'true');
   }
-};
+}
+// ХРАНЕНИЕ ТЕМЫ
+function statusLocalStorage() {
+  const saveLocal = JSON.parse(localStorage.getItem('light-theme'));
+  if (saveLocal === false) {
+    themeChangeControl();
+  }
+}
