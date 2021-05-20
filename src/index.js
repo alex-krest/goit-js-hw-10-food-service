@@ -28,16 +28,16 @@ themeControl.addEventListener('change', themeChangeControl);
 function themeChangeControl() {
   if (themeControl.checked) {
     body.classList.replace('light-theme', 'dark-theme');
-    localStorage.setItem('light-theme', 'false');
+    localStorage.setItem('theme', 'dark-theme');
   } else {
     body.classList.replace('dark-theme', 'light-theme');
-    localStorage.setItem('light-theme', 'true');
+    localStorage.setItem('theme', 'light-theme');
   }
 }
 // ХРАНЕНИЕ ТЕМЫ
 function statusLocalStorage() {
-  const saveLocal = JSON.parse(localStorage.getItem('light-theme'));
-  if (saveLocal === false) {
-    themeChangeControl();
+  const saveLocal = localStorage.getItem('theme');
+  if (saveLocal) {
+    //   ??????????????????????????
   }
 }
