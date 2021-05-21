@@ -36,6 +36,7 @@ function themeChangeControl() {
 }
 // ХРАНЕНИЕ ТЕМЫ
 function statusLocalStorage() {
+  themeControl.checked === false;
   const saveLocal = localStorage.getItem('theme');
   if (saveLocal) {
     body.classList.add(saveLocal);
