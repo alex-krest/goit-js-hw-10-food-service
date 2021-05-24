@@ -21,24 +21,24 @@ const body = document.querySelector('body');
 
 statusLocalStorage();
 
-body.classList.add('light-theme');
-
 themeControl.addEventListener('change', themeChangeControl);
 
 function themeChangeControl() {
   if (themeControl.checked) {
-    body.classList.replace('light-theme', 'dark-theme');
+    body.classList.remove('light-theme');
+    body.classList.add('dark-theme');
     localStorage.setItem('theme', 'dark-theme');
   } else {
-    body.classList.replace('dark-theme', 'light-theme');
+    body.classList.remove('dark-theme');
+    body.classList.add('light-theme');
     localStorage.setItem('theme', 'light-theme');
   }
 }
 // ХРАНЕНИЕ ТЕМЫ
 function statusLocalStorage() {
-  themeControl.checked === false;
   const saveLocal = localStorage.getItem('theme');
-  if (saveLocal) {
+  if ((saveLocal = 'dark-theme')) {
+    themeControl.checked === true;
     body.classList.add(saveLocal);
   }
 }
