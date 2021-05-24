@@ -19,9 +19,17 @@ function createMenuCardsMarkup(cards) {
 const themeControl = document.querySelector('#theme-switch-toggle');
 const body = document.querySelector('body');
 
-statusLocalStorage();
-
 themeControl.addEventListener('change', themeChangeControl);
+
+// ХРАНЕНИЕ ТЕМЫ
+body.classList.add(
+  localStorage.getItem('theme') === null ? 'light-theme' : localStorage.getItem('theme'),
+);
+
+// ВКЛЮЧЕННЫЙ ЧЕКБОКС ПРИ ТЁМНОЙ ТЕМЕ
+if (body.classList.value === 'dark-theme') {
+  themeControl.checked = true;
+}
 
 function themeChangeControl() {
   if (themeControl.checked) {
@@ -32,13 +40,5 @@ function themeChangeControl() {
     body.classList.remove('dark-theme');
     body.classList.add('light-theme');
     localStorage.setItem('theme', 'light-theme');
-  }
-}
-// ХРАНЕНИЕ ТЕМЫ
-function statusLocalStorage() {
-  const saveLocal = localStorage.getItem('theme');
-  if ((saveLocal = 'dark-theme')) {
-    themeControl.checked === true;
-    body.classList.add(saveLocal);
   }
 }
